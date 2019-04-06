@@ -7,6 +7,10 @@ namespace SkiResort.Data.Models
 {
     public class Hike
     {
+        public Hike()
+        {
+                    
+        }
         public Hike(string startPoint, string endPoint, decimal length, DateTime startDate)
         {
             this.StartPoint = startPoint;

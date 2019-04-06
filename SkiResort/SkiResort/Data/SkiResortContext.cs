@@ -31,7 +31,8 @@ namespace SkiResort.Data
             base.OnModelCreating(modelBuilder);
 
            //това нищо не ми работи и не знам защо
-            //modelBuilder.Entity<Trail>().HasForeignKey(x => x.LiftId);
+          
+          // modelBuilder.Entity<Trail>().HasForeignKey(x => x.LiftId);
         }
 
 
