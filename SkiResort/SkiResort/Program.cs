@@ -6,9 +6,11 @@ namespace SkiResort
     {
         static void Main(string[] args)
         {
-            WelcomeMenu();
 
-             void WelcomeMenu() {
+            /// tuka slagam random metodi deto ne znam oshte kude trqbva da sa, no znam che trqbva da gi ima ///
+
+            void WelcomeMenu()
+            {
 
 
                 Console.WriteLine("         ┌────────────────────────────────┐");
@@ -21,6 +23,10 @@ namespace SkiResort
                 Console.WriteLine("│                                                  │   ");
                 Console.WriteLine("└──────────────────────────────────────────────────┘");
             }
+
+
+
+
         }
     }
 }
