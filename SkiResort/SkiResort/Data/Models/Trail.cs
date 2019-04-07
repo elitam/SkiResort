@@ -11,11 +11,14 @@ namespace SkiResort.Data.Models
     public class Trail
 
     {
+<<<<<<< HEAD
+=======
 
         public Trail()
         {
                 
         }
+>>>>>>> ccbde461353ae3845e9794f2a49ededd741c4790
         public Trail(string name, string type, string mode)
         {
             this.Name = name;
@@ -23,9 +26,13 @@ namespace SkiResort.Data.Models
             this.Mode = mode;
 
         }
+<<<<<<< HEAD
+       
+=======
 
         //public enum TrailsType { Green, Blue, Red, Black }
        // public enum TrailsMode { Beginners, Easy, Intermediate, Experts_only }
+>>>>>>> ccbde461353ae3845e9794f2a49ededd741c4790
 
         [Key]
         public int Id { get; set; }
