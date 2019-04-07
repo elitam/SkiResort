@@ -1,11 +1,16 @@
-﻿using System;
+﻿using SkiResort.Business;
+using SkiResort.Data.Models;
+using System;
 
 namespace SkiResort
 {
     class Program
     {
+        public static object HikeComtroller { get; private set; }
+
         static void Main(string[] args)
         {
+<<<<<<< HEAD
 
             /// tuka slagam random metodi deto ne znam oshte kude trqbva da sa, no znam che trqbva da gi ima ///
 
@@ -26,6 +31,15 @@ namespace SkiResort
 
 
 
+=======
+            Hike hike = new Hike("hotel Rila", "Musala", 20, new DateTime(2019, 9, 8));
+            HikeController hikeController = new HikeController();
+
+            //hikeController.Add(hike);
+
+            hikeController.Delete(2);
+            
+>>>>>>> ccbde461353ae3845e9794f2a49ededd741c4790
 
         }
     }

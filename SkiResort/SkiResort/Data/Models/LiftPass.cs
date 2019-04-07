@@ -5,9 +5,13 @@ using System.Text;
 
 namespace SkiResort.Data.Models
 {
-    public abstract class LiftPass
+    public  class LiftPass
     {
-        protected LiftPass(string type, DateTime startDate, DateTime endDate)
+        public LiftPass()
+        {
+
+        }
+        public LiftPass(string type, DateTime startDate, DateTime endDate)
         {
             this.Type = type;
             this.StartDate = startDate;
@@ -21,6 +25,8 @@ namespace SkiResort.Data.Models
 
         [Required]
         public DateTime StartDate { get; set; }
+
+        [Required]
         public DateTime EndDate { get; set; }
 
     }
