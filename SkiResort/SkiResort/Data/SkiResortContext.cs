@@ -25,15 +25,12 @@ namespace SkiResort.Data
         public DbSet<Lift > Lifts { get; set; }
         public DbSet<LiftPass> LiftPasses { get; set; }
         public DbSet<Trail> Trails { get; set; }
-        public DbSet<Rental> Rentals { get; set; }
-
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-           //това нищо не ми работи и не знам защо
           
-          // modelBuilder.Entity<Trail>().HasForeignKey(x => x.LiftId);
         }
 
 

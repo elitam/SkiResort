@@ -34,7 +34,7 @@ namespace SkiResort.Data.Models
         [Required]
         public DateTime StartDate { get; set; }
 
-        public string Rate { get; set; }
+        public int Rate { get; set; }
         
     }
 }

@@ -7,13 +7,10 @@ namespace SkiResort.Data.Models
 {
     public class Lift
     {
-<<<<<<< HEAD
-=======
         public Lift()
         {
                 
         }
->>>>>>> ccbde461353ae3845e9794f2a49ededd741c4790
         public Lift(string name, decimal length, decimal verticalRise, string workingHours, bool nightSkiing)
         {
             this.Name = name;
