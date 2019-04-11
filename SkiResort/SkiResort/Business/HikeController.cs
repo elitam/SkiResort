@@ -26,34 +26,11 @@ namespace SkiResort.Business
 
         public List<Hike> GetAll()
         {
-            return hikeContext.Hikes
-                   .Include(r => r.StartPoint)
-                   .Include(r => r.EndPoint)
-                   .Include(x=>x.Length)
-                   .Include(x=>x.StartDate)
-                   .ToList();
-
-            //return hikeContext.Hikes.ToList(); 
-
-            //hikeList = hikeContext.Hikes.ToList();
-
-            //if (hikeList.Count <0)
-            //{
-            //    throw new Exception("There is no hikes listed!");
-            //}
-            //else
-            //{
-            //    return hikeList;
-            //}
-        
-
+           
+            return hikeContext.Hikes.ToList(); 
+            
             // return hikeContext.Hikes.OrderBy(x => x.Length).ToList();
             
-            //using (hikeContext = new SkiResortContext())
-            //{
-            //    return hikeContext.Hikes.ToList();
-            //}
-
         }
 
         public Hike Get(int id)
@@ -87,8 +64,8 @@ namespace SkiResort.Business
 
         public void Update(Hike hike)
         {
-            using (hikeContext = new SkiResortContext())
-            {
+            
+            
                 var currHike = hikeContext.Hikes.Find(hike.Id);
                 if (currHike != null)
                 {
@@ -100,7 +77,7 @@ namespace SkiResort.Business
                     throw new InvalidOperationException("Hike does not exist");
 
                 }
-            }
+            
         }
 
       

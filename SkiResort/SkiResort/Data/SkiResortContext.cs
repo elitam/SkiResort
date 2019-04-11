@@ -25,12 +25,21 @@ namespace SkiResort.Data
         public DbSet<Lift > Lifts { get; set; }
         public DbSet<LiftPass> LiftPasses { get; set; }
         public DbSet<Trail> Trails { get; set; }
-       
+        public DbSet<Rate> Rates { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
+
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-          
+           
+            modelBuilder.Entity<Item>().HasOne(rt => rt.Rental).WithMany(r => r.Items).HasForeignKey(rt => rt.RentalId);
+            modelBuilder.Entity<Rate>().HasOne(rt => rt.Hike).WithMany(r => r.Rates).HasForeignKey(rt => rt.HikeId);
+
+
         }
 
 

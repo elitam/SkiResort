@@ -25,12 +25,10 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("AverageDuration");
+
                     b.Property<string>("EndPoint")
                         .IsRequired();
-
-                    b.Property<decimal>("Length");
-
-                    b.Property<string>("Rate");
 
                     b.Property<DateTime>("StartDate");
 
@@ -48,17 +46,25 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Gender")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("Quantity");
+                    b.Property<int?>("RentalId");
 
-                    b.Property<double>("Size");
+                    b.Property<string>("Size")
+                        .IsRequired();
+
+                    b.Property<string>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RentalId");
 
                     b.ToTable("Items");
                 });
@@ -101,7 +107,36 @@ namespace SkiResort.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("liftPasses");
+                    b.ToTable("LiftPasses");
+                });
+
+            modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("HikeId");
+
+                    b.Property<int>("Stars")
+                        .HasMaxLength(5);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HikeId");
+
+                    b.ToTable("Rates");
+                });
+
+            modelBuilder.Entity("SkiResort.Data.Models.Rental", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("SkiResort.Data.Models.Trail", b =>
@@ -124,6 +159,21 @@ namespace SkiResort.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Trails");
+                });
+
+            modelBuilder.Entity("SkiResort.Data.Models.Item", b =>
+                {
+                    b.HasOne("SkiResort.Data.Models.Rental", "Rental")
+                        .WithMany("Items")
+                        .HasForeignKey("RentalId");
+                });
+
+            modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>
+                {
+                    b.HasOne("SkiResort.Data.Models.Hike", "Hike")
+                        .WithMany("Rates")
+                        .HasForeignKey("HikeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -41,6 +41,6 @@ namespace SkiResort.Data.Models
 
         [ForeignKey("FK_Lifts_Id")]
         
-        public int? LiftId { get; set; }
+        public int LiftId { get; set; }
     }
 }

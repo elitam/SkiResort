@@ -7,7 +7,7 @@ namespace SkiResort
 {
     class Program
     {
-        public static object HikeComtroller { get; private set; }
+        //public static object HikeComtroller { get; private set; }
 
         static void Main(string[] args)
         {

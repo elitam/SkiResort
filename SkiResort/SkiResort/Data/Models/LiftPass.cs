@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SkiResort.Data.Models
 {
-    public  class LiftPass
+    public class LiftPass
     {
         public LiftPass()
         {
@@ -17,17 +17,22 @@ namespace SkiResort.Data.Models
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
+
         [Key]
         public int Id { get; set; }
 
         [Required]
         public string Type { get; set; }
 
+
         [Required]
         public DateTime StartDate { get; set; }
 
         [Required]
         public DateTime EndDate { get; set; }
+
+        //[Required]
+        //public double Price { get; set; }
 
     }
 }

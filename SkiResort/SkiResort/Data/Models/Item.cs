@@ -7,13 +7,20 @@ namespace SkiResort.Data.Models
 {
     public class Item
     {
-        public Item(int id, string name, decimal price, int quantity, double size)
+        public Item()
+        {
+
+        }
+        public Item(int id, string name, decimal price, string size,string gender)
         {
             this.Id = id;
             this.Name = name;
             this.Price = price;
-            this.Quantity = quantity;
+           
             this.Size = size;
+            this.Gender = gender;
+            this.Status = "Not Rented";
+            this.RentalId = 1;
         }
 
         [Key]
@@ -26,11 +33,21 @@ namespace SkiResort.Data.Models
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        public int Quantity { get; set; }
+        
 
         [Required]
-        public double Size { get; set; }
+        public string Size { get; set; }
+
+        [Required]
+        public string Gender { get; set; }
+
+        public Rental Rental { get; set; }
+        
+        public int? RentalId { get; set; }
+
+        
+
+        public string Status { get; set; }
 
     }
 }

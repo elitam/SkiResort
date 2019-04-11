@@ -15,17 +15,22 @@ namespace SkiResort.Views
         private void WelcomeMenu()
         {
 
-
+            Console.WriteLine();
             Console.WriteLine("         ┌────────────────────────────────┐");
             Console.WriteLine("         │   WELCOME TO OUR SKI RESORT!   │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                     MENU:                        │   ");
-            Console.WriteLine("│   1. INFO                      3. LIFTPASSES     │   ");
             Console.WriteLine("│                                                  │   ");
-            Console.WriteLine("│   2. RENTAL                    4. HIKES          │   ");
+            Console.WriteLine("│     0. EXIT                2. SEVICES            │   ");
+            Console.WriteLine("│                                 &                │   ");
+            Console.WriteLine("│     1. INFO                 ACTIVITIES           │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("└──────────────────────────────────────────────────┘");
+            Console.WriteLine();
         }
+
+        private int closeOperation = 0;
+
         private void Input()
         {
             var operation = -1;
@@ -35,43 +40,29 @@ namespace SkiResort.Views
                 operation  = int.Parse(Console.ReadLine());
                 switch (operation)
                 {
+                   
                     case 1:
                         Info();
                         break;
                     case 2:
-                        Rental();
+                        SevicesAndAct();
                         break;
-                    case 3:
-                        LiftPasses();
-                        break;
-                    case 4:
-                        Hikes();
-                        break;
+                   
                     default:
                         break;
                 }
 
-            } while (true);
+            } while (operation !=closeOperation);
            
         }
 
        
 
-        private void Hikes()
-        {
+      
 
-            DisplayHikes displayHikes = new DisplayHikes();
-            
-        }
-
-        private void LiftPasses()
+        private void SevicesAndAct()
         {
-            throw new NotImplementedException();
-        }
-
-        private void Rental()
-        {
-            throw new NotImplementedException();
+            DisplayServicesAndActivities displayServicesAndActivities = new DisplayServicesAndActivities();
         }
 
         private void Info()
