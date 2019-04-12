@@ -189,7 +189,7 @@ namespace SkiResort.Views.Hikes
             Console.WriteLine("Enter ID to update:");
             int id = int.Parse(Console.ReadLine());
             Hike hike = hikeController.Get(id);
-            //Console.WriteLine(PrintHike(hike));
+           
             return hike;
         }
 

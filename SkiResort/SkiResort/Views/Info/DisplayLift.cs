@@ -28,7 +28,7 @@ namespace SkiResort.Views
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                      MENU:                       │   ");
             Console.WriteLine("│                                                  │   ");
-            Console.WriteLine("│       0. BACK                2. DELETE           │   ");
+            Console.WriteLine("│       0. BACK                2. REMOVE           │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│       1. ADD                 3. LIST ALL         │   ");
             Console.WriteLine("│                                                  │   ");
@@ -51,7 +51,7 @@ namespace SkiResort.Views
                         Add();
                         break;
                     case 2:
-                        Delete();
+                        Remove();
                         break;
                     case 3:
                         ListAll();
@@ -69,20 +69,21 @@ namespace SkiResort.Views
 
         }
 
-        private void Delete()
+        private void Remove()
         {
+            this.ListAll();
             Console.WriteLine("Enter ID to delete: ");
             int id = int.Parse(Console.ReadLine());
             Lift lift = new Lift();
             liftController.Delete(id);
-            Console.WriteLine("Done!");
+            Console.WriteLine("Lift removed successfully!");
         }
 
-     
+
 
         private void Add()
         {
-            //name, decimal length, decimal verticalRise, string workingHours, bool nightSkiing
+            
             Lift lift = new Lift();
             Console.WriteLine("Enter name: ");
             lift.Name = Console.ReadLine();
@@ -92,10 +93,25 @@ namespace SkiResort.Views
             lift.VerticalRise = decimal.Parse(Console.ReadLine());
             Console.WriteLine("Enter working hours: ");
             lift.WorkingHours = Console.ReadLine();
-            Console.WriteLine("Is it working at night: ");
-            lift.NightSkiing = bool.Parse(Console.ReadLine());
-
+            Console.WriteLine("Is it working at night: (True/False) ");
+            var liftNightSkiing = Console.ReadLine();
+            liftNightSkiing = ValidateBoolean(liftNightSkiing);
+            lift.NightSkiing = bool.Parse(liftNightSkiing);
             this.liftController.Add(lift);
+            Console.WriteLine("Lift added successfully!");
+
+        }
+        
+        // Validating if lift night skiing if true of false to parse it to Boolean
+        private string ValidateBoolean(string liftNightSkiing)
+        {
+            while (liftNightSkiing.ToLower() != "true" && liftNightSkiing.ToLower() != "false")
+            {
+                Console.WriteLine("Invalid command. Enter True or False!");
+                Console.WriteLine("Is it working at night: (True/False) ");
+                liftNightSkiing = Console.ReadLine();
+            }
+            return liftNightSkiing;
         }
 
         private void ListAll()

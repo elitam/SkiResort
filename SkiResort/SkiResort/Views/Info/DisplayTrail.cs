@@ -30,7 +30,7 @@ namespace SkiResort.Views
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                      MENU:                       │   ");
             Console.WriteLine("│                                                  │   ");
-            Console.WriteLine("│       0. BACK                2. DELETE           │   ");
+            Console.WriteLine("│       0. BACK                2. REMOVE           │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│       1. ADD                 3. LIST ALL         │   ");
             Console.WriteLine("│                                                  │   ");
@@ -53,7 +53,7 @@ namespace SkiResort.Views
                         Add();
                         break;
                     case 2:
-                        Delete();
+                        Remove();
                         break;
                     case 3:
                         ListAll();
@@ -71,13 +71,15 @@ namespace SkiResort.Views
 
         }
 
-        private void Delete()
+        private void Remove()
         {
+            this.ListAll();
+
             Console.WriteLine("Enter ID to delete: ");
             int id = int.Parse(Console.ReadLine());
             Trail trail = new Trail();
             trailController.Delete(id);
-            Console.WriteLine("Done!");
+            Console.WriteLine("Trail removed successfully!");
         }
 
         
@@ -105,6 +107,7 @@ namespace SkiResort.Views
 
 
             this.trailController.Add(trail);
+            Console.WriteLine("Trail added successfully!");
         }
 
         private void ListAll()

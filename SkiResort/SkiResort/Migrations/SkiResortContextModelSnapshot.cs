@@ -98,9 +98,12 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("EndDate");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<DateTime>("StartDate");
+                    b.Property<double>("Duration");
+
+                    b.Property<double>("Price");
 
                     b.Property<string>("Type")
                         .IsRequired();
@@ -118,8 +121,7 @@ namespace SkiResort.Migrations
 
                     b.Property<int>("HikeId");
 
-                    b.Property<int>("Stars")
-                        .HasMaxLength(5);
+                    b.Property<int>("Stars");
 
                     b.HasKey("Id");
 
@@ -134,6 +136,8 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name");
+
                     b.HasKey("Id");
 
                     b.ToTable("Rentals");
@@ -145,7 +149,7 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LiftId");
+                    b.Property<int>("LiftId");
 
                     b.Property<string>("Mode")
                         .IsRequired();

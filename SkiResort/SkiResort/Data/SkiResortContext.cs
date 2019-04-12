@@ -20,13 +20,13 @@ namespace SkiResort.Data
 
         }
 
-        public DbSet<Hike> Hikes { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Lift > Lifts { get; set; }
-        public DbSet<LiftPass> LiftPasses { get; set; }
-        public DbSet<Trail> Trails { get; set; }
-        public DbSet<Rate> Rates { get; set; }
-        public DbSet<Rental> Rentals { get; set; }
+        public virtual DbSet<Hike> Hikes { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Lift > Lifts { get; set; }
+        public virtual DbSet<LiftPass> LiftPasses { get; set; }
+        public virtual DbSet<Trail> Trails { get; set; }
+        public virtual DbSet<Rate> Rates { get; set; }
+        public virtual DbSet<Rental> Rentals { get; set; }
 
 
 

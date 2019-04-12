@@ -9,6 +9,7 @@ namespace SkiResort.Data.Models
     {
         public Item()
         {
+            this.Status = "Not Rented";
 
         }
         public Item(int id, string name, decimal price, string size,string gender)

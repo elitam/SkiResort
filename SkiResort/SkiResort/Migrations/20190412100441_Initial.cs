@@ -16,7 +16,7 @@ namespace SkiResort.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     StartPoint = table.Column<string>(nullable: false),
                     EndPoint = table.Column<string>(nullable: false),
-                    Length = table.Column<decimal>(nullable: false),
+                    AverageDuration = table.Column<decimal>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -31,8 +31,8 @@ namespace SkiResort.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Type = table.Column<string>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false)
+                    Duration = table.Column<double>(nullable: false),
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,8 @@ namespace SkiResort.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,7 +78,7 @@ namespace SkiResort.Migrations
                     Name = table.Column<string>(nullable: false),
                     Type = table.Column<string>(nullable: false),
                     Mode = table.Column<string>(nullable: false),
-                    LiftId = table.Column<int>(nullable: true)
+                    LiftId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,10 +113,9 @@ namespace SkiResort.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 20, nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
-                    Size = table.Column<double>(nullable: false),
+                    Size = table.Column<string>(nullable: false),
                     Gender = table.Column<string>(nullable: false),
-                    RentalId = table.Column<int>(nullable: false),
+                    RentalId = table.Column<int>(nullable: true),
                     Status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -126,7 +126,7 @@ namespace SkiResort.Migrations
                         column: x => x.RentalId,
                         principalTable: "Rentals",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

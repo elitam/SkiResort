@@ -13,19 +13,22 @@ namespace SkiResort.Views
         public DisplayHikes()
         {
             hikeController = new HikeController();
+            rateController = new RateController();
             InputHikes();
         }
 
         
 
-        private HikeController hikeController; 
+        private HikeController hikeController;
+        private RateController rateController;
 
-        
+
+
 
         private void ShowMenuHikes()
         {
             Console.WriteLine("         ┌────────────────────────────────┐");
-            Console.WriteLine("         │             HIKES!             │");
+            Console.WriteLine("         │            HIKES!              │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                     MENU:                        │   ");
             Console.WriteLine("│                                                  │   ");
@@ -33,9 +36,10 @@ namespace SkiResort.Views
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│      1. ADD                  4. UPDATE           │   ");
             Console.WriteLine("│                                                  │   ");
-            Console.WriteLine("│      2. DELETE               5. RATE             │   ");
+            Console.WriteLine("│      2. REMOVE               5. RATE             │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("└──────────────────────────────────────────────────┘");
+            Console.WriteLine();
         }
 
         private void InputHikes()
@@ -54,7 +58,7 @@ namespace SkiResort.Views
                         Add();
                         break;
                     case 2:
-                        Delete();
+                        Remove();
                         break;
                     case 3:
                         ListAll();
@@ -82,13 +86,17 @@ namespace SkiResort.Views
 
 
 
-        private void Delete()
+        private void Remove()
         {
+            this.ListAll();
+
             Console.WriteLine("Enter ID to delete: ");
             int id = int.Parse(Console.ReadLine());
             Hike hike = new Hike();
             hikeController.Delete(id);
-            Console.WriteLine("Done!");
+            Console.WriteLine("Hike removed successfully!");
+            
+
         }
 
         private void Update()
@@ -99,7 +107,15 @@ namespace SkiResort.Views
 
         private void Rate()
         {
-            throw new NotImplementedException();
+            this.ListAll();
+            Rate rate = new Rate();
+
+            Console.WriteLine("Enter hike id to rate: ");
+            rate.HikeId = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter stars: ");
+            rate.Stars = int.Parse(Console.ReadLine());
+            this.rateController.AddRate(rate);
+            Console.WriteLine("Rate added successfully!");
         }
 
         private void Add()
@@ -114,6 +130,7 @@ namespace SkiResort.Views
             Console.WriteLine("Enter average duration: ");
             hike.AverageDuration = decimal.Parse(Console.ReadLine());
             this.hikeController.Add(hike);
+            Console.WriteLine("Hike added successfully!");
         }
 
         public void ListAll()
@@ -127,8 +144,11 @@ namespace SkiResort.Views
 
             foreach (var hike in hikes)
             {
-                Console.WriteLine($"{hike.Id} From {hike.StartPoint} to {hike.EndPoint} - {hike.AverageDuration:f0} hours on {hike.StartDate.ToString("dd/MM/yyyy")}");
+                var rating = rateController.CalculateRateForHike(hike);
+                Console.WriteLine($"{hike.Id} From {hike.StartPoint} to {hike.EndPoint} - {hike.AverageDuration:f0} hours on {hike.StartDate.ToString("dd/MM/yyyy")}" +
+                    $" with rate {rating} starts ");
             }
+            Console.WriteLine();
         }
 
       

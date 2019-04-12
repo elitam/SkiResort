@@ -16,9 +16,9 @@ namespace SkiResort.Views
 
             Console.WriteLine();
             Console.WriteLine("         ┌────────────────────────────────┐");
-            Console.WriteLine("         │   WELCOME TO OUR SKI RESORT!   │");
+            Console.WriteLine("         │      SEVICES & ACTIVITIES      │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
-            Console.WriteLine("│                     MENU:                        │   ");
+            Console.WriteLine("│                      MENU:                       │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│                    0. BACK                       │   ");
             Console.WriteLine("│                                                  │   ");
@@ -59,7 +59,7 @@ namespace SkiResort.Views
 
         private void Rental()
         {
-            throw new NotImplementedException();
+            DisplayRental displayRental = new DisplayRental();
         }
 
         private void Hikes()

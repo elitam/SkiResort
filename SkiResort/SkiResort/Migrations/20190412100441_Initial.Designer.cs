@@ -10,8 +10,8 @@ using SkiResort.Data;
 namespace SkiResort.Migrations
 {
     [DbContext(typeof(SkiResortContext))]
-    [Migration("20190410091326_RemoveQuantity")]
-    partial class RemoveQuantity
+    [Migration("20190412100441_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,10 +27,10 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("AverageDuration");
+
                     b.Property<string>("EndPoint")
                         .IsRequired();
-
-                    b.Property<decimal>("Length");
 
                     b.Property<DateTime>("StartDate");
 
@@ -57,9 +57,10 @@ namespace SkiResort.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("RentalId");
+                    b.Property<int?>("RentalId");
 
-                    b.Property<double>("Size");
+                    b.Property<string>("Size")
+                        .IsRequired();
 
                     b.Property<string>("Status");
 
@@ -99,9 +100,9 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("EndDate");
+                    b.Property<double>("Duration");
 
-                    b.Property<DateTime>("StartDate");
+                    b.Property<double>("Price");
 
                     b.Property<string>("Type")
                         .IsRequired();
@@ -135,6 +136,8 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name");
+
                     b.HasKey("Id");
 
                     b.ToTable("Rentals");
@@ -146,7 +149,7 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LiftId");
+                    b.Property<int>("LiftId");
 
                     b.Property<string>("Mode")
                         .IsRequired();
@@ -166,8 +169,7 @@ namespace SkiResort.Migrations
                 {
                     b.HasOne("SkiResort.Data.Models.Rental", "Rental")
                         .WithMany("Items")
-                        .HasForeignKey("RentalId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RentalId");
                 });
 
             modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>

@@ -24,8 +24,7 @@ namespace SkiResort.Data.Models
 
         }
 
-        //public enum TrailsType { Green, Blue, Red, Black }
-       // public enum TrailsMode { Beginners, Easy, Intermediate, Experts_only }
+      
 
         [Key]
         public int Id { get; set; }

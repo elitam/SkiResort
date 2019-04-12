@@ -11,34 +11,50 @@ namespace SkiResort.Business
     public class HikeController
     {
         private SkiResortContext hikeContext;
-        
+        private RateController rateController;
 
-        //Hike hike = new Hike();
+
 
         public HikeController()
         {
             this.hikeContext = new SkiResortContext();
-            //hikeList = new List<Hike>();
+            this.rateController = new RateController();
+           
+        }
+
+        public HikeController(SkiResortContext context)
+        {
+            this.hikeContext = context;
+            this.rateController = new RateController();
+
 
         }
 
-        //private List<Hike> hikeList;
+        /// <summary>
+        /// Gives all hikes from database.
+        /// </summary>
+        /// <returns>a list of all hikes</returns>
 
         public List<Hike> GetAll()
         {
-           
             return hikeContext.Hikes.ToList(); 
-            
-            // return hikeContext.Hikes.OrderBy(x => x.Length).ToList();
             
         }
 
+        /// <summary>
+        /// Gives a hikes from database by id.
+        /// </summary>
         public Hike Get(int id)
         {
             var hike = this.hikeContext.Hikes.FirstOrDefault(x => x.Id == id);
             return hike;
         }
 
+
+
+        /// <summary>
+        /// Adds a hike.
+        /// </summary>
         public void Add(Hike hike)
         {
 
@@ -46,6 +62,9 @@ namespace SkiResort.Business
             this.hikeContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Deletes a hike from the database.
+        /// </summary>
         public void Delete(int id)
         {
             var hike = this.Get(id);
@@ -55,13 +74,20 @@ namespace SkiResort.Business
 
         }
 
-        //RateHike 
+        /// <summary>
+        /// Calculate the hike rate .
+        /// </summary>
+
         public void CalculateRateHike(int id)
         {
             var hike = this.Get(id);
+            rateController.CalculateRateForHike(hike);
 
         }
 
+        /// <summary>
+        /// Updates current values for a hike.
+        /// </summary>
         public void Update(Hike hike)
         {
             
