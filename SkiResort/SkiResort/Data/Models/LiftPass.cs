@@ -5,17 +5,20 @@ using System.Text;
 
 namespace SkiResort.Data.Models
 {
-    public  class LiftPass
+    public class LiftPass
     {
+
+        //price calc method
         public LiftPass()
         {
 
         }
-        public LiftPass(string type, DateTime startDate, DateTime endDate)
+        public LiftPass(string type, double duration, double price, string description)
         {
             this.Type = type;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
+            this.Duration = duration;
+            this.Price = price;
+            this.Description = description;
         }
         [Key]
         public int Id { get; set; }
@@ -24,10 +27,13 @@ namespace SkiResort.Data.Models
         public string Type { get; set; }
 
         [Required]
-        public DateTime StartDate { get; set; }
+        public double Duration { get; set; }
 
         [Required]
-        public DateTime EndDate { get; set; }
+        public double Price { get; set; }
+
+        [Required]
+        public string Description { get; set; }
 
     }
 }

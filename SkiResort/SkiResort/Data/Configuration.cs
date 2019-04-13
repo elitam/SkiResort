@@ -6,6 +6,6 @@ namespace SkiResort.Data
 {
     public static class Configuration
     {
-        public const string ConnectionString = "Server = Ivi-PC;Database=SkiResort;Integrated Security = True";
+        public const string ConnectionString = "Server = ELINOIS\\SQLEXPRESS;Database=SkiResortBoro;Integrated Security = True";
     }
 }

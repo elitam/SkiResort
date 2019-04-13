@@ -9,13 +9,13 @@ namespace SkiResort.Data.Models
     {
         public Hike()
         {
-                    
+
         }
-        public Hike(string startPoint, string endPoint, decimal length, DateTime startDate)
+        public Hike(string startPoint, string endPoint, decimal averageDuration, DateTime startDate)
         {
             this.StartPoint = startPoint;
             this.EndPoint = endPoint;
-            this.Length = length;
+            this.AverageDuration = averageDuration;
             this.StartDate = startDate;
         }
 
@@ -29,12 +29,12 @@ namespace SkiResort.Data.Models
         public string EndPoint { get; set; }
 
         [Required]
-        public decimal Length { get; set; }
+        public decimal AverageDuration { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
 
-        public string Rate { get; set; }
-        
+        public ICollection<Rate> Rates { get; set; }
+
     }
 }
