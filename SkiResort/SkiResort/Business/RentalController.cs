@@ -23,7 +23,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Gives a item from database by id.
         /// </summary>
-        internal Item GetItem(int id)
+        public Item GetItem(int id)
         {
             var item = this.rentalContext.Items.FirstOrDefault(x => x.Id == id);
             return item;
@@ -41,7 +41,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Adds a item.
         /// </summary>
-        internal void Add(Item item)
+        public void Add(Item item)
         {
             this.rentalContext.Items.Add(item);
             this.rentalContext.SaveChanges();
@@ -61,7 +61,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Sets status of a item to Rented.
         /// </summary>
-        internal void RentItem(int id)
+        public void RentItem(int id)
         {
             var item = this.GetItem(id);
             item.Status = "Rented";
@@ -71,7 +71,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Sets status of a item to Not Rented.
         /// </summary>
-        internal void ReturnItem(int id)
+        public void ReturnItem(int id)
         {
             var item = this.GetItem(id);
             item.Status = "Not Rented";

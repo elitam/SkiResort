@@ -13,8 +13,14 @@ namespace SkiResort.Business
 
         public RateController()
         {
-            rateContext = new SkiResortContext();
+            this.rateContext = new SkiResortContext();
         }
+
+        public RateController(SkiResortContext context)
+        {
+            this.rateContext = context;
+        }
+        
 
         /// <summary>
         /// Gives all rates from database.
@@ -24,17 +30,23 @@ namespace SkiResort.Business
         {
             return rateContext.Rates.ToList();
         }
-        public Lift Get(int id)
+
+        /// <summary>
+        /// Gives a rate from database by id.
+        /// </summary>  
+        public Rate Get(int id)
         {
-            var rate = this.rateContext.Lifts.FirstOrDefault(x => x.Id == id);
+            var rate = this.rateContext.Rates.FirstOrDefault(x => x.Id == id);
             return rate;
         }
 
-
-
+        
         /// <summary>
-        /// Calculate the average rate for a hike.
+        /// This method calculates the rating of an existing hike.
+        /// If there's more than one rating for a this hike the method calculates the average.
         /// </summary>
+        /// <param name="hike">The hike chosen by the user.</param>
+        /// <returns>Returns the average of ratings for a hike chosen by the user.</returns>
         public int CalculateRateForHike(Hike hike)
         {
             var rates = GetAll();
@@ -61,7 +73,6 @@ namespace SkiResort.Business
         /// </summary>
         public void AddRate(Rate rate)
         {
-
             this.rateContext.Rates.Add(rate);
             this.rateContext.SaveChanges();
         }

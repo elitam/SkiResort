@@ -112,7 +112,7 @@ namespace SkiResort.Views
 
             Console.WriteLine("Enter hike id to rate: ");
             rate.HikeId = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter stars: ");
+            Console.WriteLine("Enter stars (1...5): ");
             rate.Stars = int.Parse(Console.ReadLine());
             this.rateController.AddRate(rate);
             Console.WriteLine("Rate added successfully!");

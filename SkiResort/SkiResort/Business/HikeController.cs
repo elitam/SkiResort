@@ -33,8 +33,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Gives all hikes from database.
         /// </summary>
-        /// <returns>a list of all hikes</returns>
-
+        /// <returns>List of all hikes</returns>
         public List<Hike> GetAll()
         {
             return hikeContext.Hikes.ToList(); 
@@ -75,9 +74,8 @@ namespace SkiResort.Business
         }
 
         /// <summary>
-        /// Calculate the hike rate .
+        /// Calculate the hike rate using method from RateController .
         /// </summary>
-
         public void CalculateRateHike(int id)
         {
             var hike = this.Get(id);
@@ -86,8 +84,9 @@ namespace SkiResort.Business
         }
 
         /// <summary>
-        /// Updates current values for a hike.
+        /// This method updates the description of a hike chosen by the user.
         /// </summary>
+        /// <param name="hike">The hike chosen by the user.</param>
         public void Update(Hike hike)
         {
             

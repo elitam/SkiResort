@@ -11,14 +11,12 @@ using System.Text;
 
 namespace SkiResort.Tests
 {
-    public class TestAdd
+    public class HikeControllerTests
     {
         [TestCase]
 
-        public void AddHike()
+        public void AddingHikeToDatabase()
         {
-           
-
             var mockSet = new Mock<DbSet<Hike>>();
             var hike = new Hike();
             var mockContext = new Mock<SkiResortContext>();
@@ -30,13 +28,10 @@ namespace SkiResort.Tests
             mockSet.Verify(m => m.Add(It.IsAny<Hike>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
-
-            
-
         }
 
         [TestCase]
-        public void GetAllHikes()
+        public void GetAllHikesFromDatabase()
         {
             var data = new List<Hike>
             {
@@ -64,7 +59,7 @@ namespace SkiResort.Tests
         }
 
         [TestCase]
-        public void GetHike()
+        public void GetHikeFromDatabaseById()
         {
             var data = new List<Hike>
             {

@@ -145,7 +145,7 @@ namespace SkiResort.Migrations
                     b.ToTable("Rentals");
                 });
 
-            modelBuilder.Entity("SkiResort.Data.Models.Trail", b =>
+            modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

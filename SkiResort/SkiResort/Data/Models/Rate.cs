@@ -13,16 +13,15 @@ namespace SkiResort.Data.Models
         }
         public Rate(int stars, int hikeId)
         {
-            Stars = stars;
-           // Hike = hike;
-            HikeId = hikeId;
+            this.Stars = stars; 
+            this.HikeId = hikeId;
         }
 
         [Key]
         public int Id { get; set; }
 
         [Required]
-        //[MaxLength(5)]
+        [MaxLength(5)]
         public int Stars { get; set; }
 
         public Hike Hike { get; set; }

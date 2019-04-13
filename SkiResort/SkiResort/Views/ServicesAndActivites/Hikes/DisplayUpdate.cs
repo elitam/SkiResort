@@ -15,10 +15,10 @@ namespace SkiResort.Views.Hikes
         }
 
 
-        
+
         private HikeController hikeController;
 
-      
+
         private void ShowMenuUpdate()
         {
             Console.WriteLine("         ┌────────────────────────────────┐");
@@ -87,6 +87,8 @@ namespace SkiResort.Views.Hikes
                 Console.WriteLine("Enter average duration in hours: ");
                 hike.AverageDuration = decimal.Parse(Console.ReadLine());
                 hikeController.Update(hike);
+                Console.WriteLine("Hike updated");
+
 
             }
             else
@@ -102,28 +104,34 @@ namespace SkiResort.Views.Hikes
 
             try
             {
-               
-                    Console.WriteLine("Enter average duration in hours: ");
-                    hike.AverageDuration = decimal.Parse(Console.ReadLine());
-                    hikeController.Update(hike);
 
-                
+                Console.WriteLine("Enter average duration in hours: ");
+                hike.AverageDuration = decimal.Parse(Console.ReadLine());
+                hikeController.Update(hike);
+                Console.WriteLine("Average duration updated");
+
+
+
             }
             catch (InvalidOperationException e)
             {
-                Console.WriteLine("{0} Hike not found.", e);
-               
-            }
+                Console.WriteLine($"{e} Hike not found.");
 
-            
-            
+            }
+            finally
+            {
+
+            }             
+
+
+
         }
 
         private void UpdateEndPoint()
         {
 
             var hike = GetHike();
-           
+
 
             if (hike != null)
             {
@@ -131,6 +139,7 @@ namespace SkiResort.Views.Hikes
                 Console.WriteLine("Enter end point: ");
                 hike.EndPoint = Console.ReadLine();
                 hikeController.Update(hike);
+                Console.WriteLine("End point updated");
 
             }
             else
@@ -143,7 +152,7 @@ namespace SkiResort.Views.Hikes
         private void UpdateStartDate()
         {
             var hike = GetHike();
-           
+
 
 
             if (hike != null)
@@ -152,6 +161,7 @@ namespace SkiResort.Views.Hikes
                 Console.WriteLine("Enter start date: ");
                 hike.StartDate = DateTime.Parse(Console.ReadLine());
                 hikeController.Update(hike);
+                Console.WriteLine("Start date updated");
 
             }
             else
@@ -162,14 +172,15 @@ namespace SkiResort.Views.Hikes
 
         private void UpdateStartPoint()
         {
-            
+
             var cuurHike = GetHike();
-           
+
             if (cuurHike != null)
             {
                 Console.WriteLine("Enter start point: ");
                 cuurHike.StartPoint = Console.ReadLine();
                 hikeController.Update(cuurHike);
+                Console.WriteLine("Start point updated");
 
             }
             else
@@ -189,7 +200,7 @@ namespace SkiResort.Views.Hikes
             Console.WriteLine("Enter ID to update:");
             int id = int.Parse(Console.ReadLine());
             Hike hike = hikeController.Get(id);
-           
+
             return hike;
         }
 

@@ -64,31 +64,31 @@ namespace SkiResort.Tests
             Assert.AreEqual("Third", trails[2].Name);
         }
 
-        //[TestCase]
-        //public void GetTrail()
-        //{
-        //    var data = new List<Trail>
-        //    {
-        //        new Hike { Id=1,StartPoint="First" },
-        //        new Hike { Id=2,StartPoint="Second" },
-        //        new Hike { Id=3,StartPoint="Third" },
-        //    }.AsQueryable();
+        [TestCase]
+        public void GetTraileFromDatabaseById()
+        {
+            var data = new List<Trail>
+            {
+                new Trail { Id=1,Name="First" },
+                new Trail { Id=2,Name="Second" },
+                new Trail { Id=3,Name="Third" },
+            }.AsQueryable();
 
-        //    var mockSet = new Mock<DbSet<Hike>>();
-        //    mockSet.As<IQueryable<Hike>>().Setup(m => m.Provider).Returns(data.Provider);
-        //    mockSet.As<IQueryable<Hike>>().Setup(m => m.Expression).Returns(data.Expression);
-        //    mockSet.As<IQueryable<Hike>>().Setup(m => m.ElementType).Returns(data.ElementType);
-        //    mockSet.As<IQueryable<Hike>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            var mockSet = new Mock<DbSet<Trail>>();
+            mockSet.As<IQueryable<Trail>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Trail>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Trail>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Trail>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
-        //    var mockContext = new Mock<SkiResortContext>();
-        //    mockContext.Setup(c => c.Hikes).Returns(mockSet.Object);
+            var mockContext = new Mock<SkiResortContext>();
+            mockContext.Setup(c => c.Trails).Returns(mockSet.Object);
 
-        //    var controller = new HikeController(mockContext.Object);
-        //    var hike = controller.Get(1);
+            var controller = new TrailController(mockContext.Object);
+            var trail = controller.Get(1);
 
-        //    Assert.AreEqual("First", hike.StartPoint);
+            Assert.AreEqual("First", trail.Name);
 
 
-        //}
+        }
     }
 }

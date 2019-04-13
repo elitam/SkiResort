@@ -25,7 +25,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Gives all lifts from database.
         /// </summary>
-        /// <returns>a list of all hikes</returns>
+        /// <returns>List of all hikes</returns>
         public List<Lift> GetAll()
         {
             return liftContext.Lifts.ToList();
@@ -41,7 +41,7 @@ namespace SkiResort.Business
         }
 
         /// <summary>
-        /// Adds a lift.
+        /// Adds a lift in database.
         /// </summary>
         public void Add(Lift lift)
         {

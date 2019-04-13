@@ -25,7 +25,7 @@ namespace SkiResort.Business
         /// <summary>
         /// Gives all trails from database.
         /// </summary>
-        /// <returns>a list of all hikes</returns>
+        /// <returns> List of all hikes</returns>
         public List<Trail> GetAll()
         {
             return trailContext.Trails.ToList();
@@ -33,6 +33,7 @@ namespace SkiResort.Business
 
         /// <summary>
         /// Gives a trail from database by id.
+        /// <param name="id">The id chosen by the user.</param>
         /// </summary>
         public Trail Get(int id)
         {
@@ -41,7 +42,8 @@ namespace SkiResort.Business
         }
 
         /// <summary>
-        /// Adds a trail.
+        /// Adds a trail in database.
+        /// <param name="trail">The trail chosen by the user.</param>
         /// </summary>
         public void Add(Trail trail)
         {
