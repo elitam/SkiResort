@@ -2,10 +2,14 @@
 using SkiResort.Data.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Drawing;
 using System.Text;
 using Console = Colorful.Console;
 
+=======
+using System.Text;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 namespace SkiResort.Views.Hikes
 {
@@ -24,6 +28,7 @@ namespace SkiResort.Views.Hikes
 
         private void ShowMenuUpdate()
         {
+<<<<<<< HEAD
             Console.WriteLine();
             Console.WriteLine("         ┌────────────────────────────────┐");
             Console.WriteLine("         │             UPDATE!            │");
@@ -39,10 +44,25 @@ namespace SkiResort.Views.Hikes
             Console.WriteLine("└──────────────────────────────────────────────────┘");
             Console.WriteLine();
 
+=======
+            Console.WriteLine("         ┌────────────────────────────────┐");
+            Console.WriteLine("         │             UPDATE!            │");
+            Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
+            Console.WriteLine("│                       MENU:                      │   ");
+            Console.WriteLine("│                                                  │   ");
+            Console.WriteLine("│    0.BACK                  3. UPDATE AVERAGE     │   ");
+            Console.WriteLine("│                                  DURATION        │   ");
+            Console.WriteLine("│    1. UPDATE START POINT   4. UPDATE START DATE  │   ");
+            Console.WriteLine("│                                                  │   ");
+            Console.WriteLine("│    2. UPDATE END POINT     5. UPDATE ALL         │   ");
+            Console.WriteLine("│                                                  │   ");
+            Console.WriteLine("└──────────────────────────────────────────────────┘");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void InputUpdate()
         {
+<<<<<<< HEAD
             ShowMenuUpdate();
 
             var operation = -1;
@@ -57,6 +77,13 @@ namespace SkiResort.Views.Hikes
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+            var operation = -1;
+            do
+            {
+                ShowMenuUpdate();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -89,6 +116,7 @@ namespace SkiResort.Views.Hikes
         private void UpdateAll()
         {
 
+<<<<<<< HEAD
             var hike = new Hike();
             do
             {
@@ -156,6 +184,56 @@ namespace SkiResort.Views.Hikes
 
             hike.AverageDuration = value;
             Console.WriteLine("\nAverage duration updated successfully!", Color.LightGreen);
+=======
+            var hike = GetHike();
+
+            if (hike != null)
+            {
+                Console.WriteLine("Enter start point: ");
+                hike.StartPoint = Console.ReadLine();
+                Console.WriteLine("Enter end point: ");
+                hike.EndPoint = Console.ReadLine();
+                Console.WriteLine("Enter start date : ");
+                hike.StartDate = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Enter average duration in hours: ");
+                hike.AverageDuration = decimal.Parse(Console.ReadLine());
+                hikeController.Update(hike);
+                Console.WriteLine("Hike updated");
+
+
+            }
+            else
+            {
+                throw new Exception("Hike not found!");
+            }
+        }
+
+        private void UpdateAverageDuration()
+        {
+            var hike = GetHike();
+
+
+            try
+            {
+
+                Console.WriteLine("Enter average duration in hours: ");
+                hike.AverageDuration = decimal.Parse(Console.ReadLine());
+                hikeController.Update(hike);
+                Console.WriteLine("Average duration updated");
+
+
+
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine($"{e} Hike not found.");
+
+            }
+            finally
+            {
+
+            }             
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 
 
@@ -164,6 +242,7 @@ namespace SkiResort.Views.Hikes
         private void UpdateEndPoint()
         {
 
+<<<<<<< HEAD
             var hike = new Hike();
             do
             {
@@ -176,6 +255,25 @@ namespace SkiResort.Views.Hikes
             Console.WriteLine("\nEnd point updated successfully!", Color.LightGreen);
 
 
+=======
+            var hike = GetHike();
+
+
+            if (hike != null)
+            {
+
+                Console.WriteLine("Enter end point: ");
+                hike.EndPoint = Console.ReadLine();
+                hikeController.Update(hike);
+                Console.WriteLine("End point updated");
+
+            }
+            else
+            {
+
+                throw new Exception("Hike not found!");
+            }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void UpdateStartDate()
@@ -187,10 +285,17 @@ namespace SkiResort.Views.Hikes
             if (hike != null)
             {
 
+<<<<<<< HEAD
                 Console.WriteLine("Enter start date: (dd-mm-yy)");
                 hike.StartDate = DateTime.Parse(Console.ReadLine());
                 hikeController.Update(hike);
                 Console.WriteLine("Start date updated successfully!");
+=======
+                Console.WriteLine("Enter start date: ");
+                hike.StartDate = DateTime.Parse(Console.ReadLine());
+                hikeController.Update(hike);
+                Console.WriteLine("Start date updated");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
             }
             else
@@ -202,6 +307,7 @@ namespace SkiResort.Views.Hikes
         private void UpdateStartPoint()
         {
 
+<<<<<<< HEAD
             var hike = new Hike();
             do
             {
@@ -214,6 +320,22 @@ namespace SkiResort.Views.Hikes
             hikeController.Update(hike);
             Console.WriteLine("\nStart Point updated successfully!", Color.LightGreen);
 
+=======
+            var cuurHike = GetHike();
+
+            if (cuurHike != null)
+            {
+                Console.WriteLine("Enter start point: ");
+                cuurHike.StartPoint = Console.ReadLine();
+                hikeController.Update(cuurHike);
+                Console.WriteLine("Start point updated");
+
+            }
+            else
+            {
+                throw new Exception("Hike not found!");
+            }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void Exit()
@@ -224,6 +346,7 @@ namespace SkiResort.Views.Hikes
 
         private Hike GetHike()
         {
+<<<<<<< HEAD
 
 
             Console.WriteLine("\nEnter ID to update:");
@@ -240,6 +363,11 @@ namespace SkiResort.Views.Hikes
                 int id = value;
                 hike = hikeController.Get(id);
             }
+=======
+            Console.WriteLine("Enter ID to update:");
+            int id = int.Parse(Console.ReadLine());
+            Hike hike = hikeController.Get(id);
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
             return hike;
         }
@@ -251,4 +379,8 @@ namespace SkiResort.Views.Hikes
         }
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

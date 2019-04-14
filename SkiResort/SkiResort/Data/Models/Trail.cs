@@ -11,13 +11,19 @@ namespace SkiResort.Data.Models
     public class Trail
 
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         public Trail()
         {
                 
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         public Trail(string name, string type, string mode)
         {
             this.Name = name;
@@ -26,6 +32,10 @@ namespace SkiResort.Data.Models
 
         }
 
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         [Key]
         public int Id { get; set; }
@@ -41,7 +51,10 @@ namespace SkiResort.Data.Models
 
         [ForeignKey("FK_Lifts_Id")]
         
+<<<<<<< HEAD
         [Required]
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         public int LiftId { get; set; }
     }
 }

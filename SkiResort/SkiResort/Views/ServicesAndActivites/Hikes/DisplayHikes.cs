@@ -3,6 +3,7 @@ using SkiResort.Data.Models;
 using SkiResort.Views.Hikes;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Drawing;
 using System.Text;
 using Console = Colorful.Console;
@@ -13,6 +14,15 @@ namespace SkiResort.Views
     public class DisplayHikes
     {
 
+=======
+using System.Text;
+
+namespace SkiResort.Views
+{
+    public class DisplayHikes 
+    {
+       
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         public DisplayHikes()
         {
             hikeController = new HikeController();
@@ -20,12 +30,25 @@ namespace SkiResort.Views
             InputHikes();
         }
 
+<<<<<<< HEAD
         private HikeController hikeController;
         private RateController rateController;
 
         private void ShowMenuHikes()
         {
             Console.WriteLine();
+=======
+        
+
+        private HikeController hikeController;
+        private RateController rateController;
+
+
+
+
+        private void ShowMenuHikes()
+        {
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
             Console.WriteLine("         ┌────────────────────────────────┐");
             Console.WriteLine("         │            HIKES!              │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
@@ -39,11 +62,15 @@ namespace SkiResort.Views
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("└──────────────────────────────────────────────────┘");
             Console.WriteLine();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void InputHikes()
         {
+<<<<<<< HEAD
             ShowMenuHikes();
             var operation = -1;
             do
@@ -57,6 +84,13 @@ namespace SkiResort.Views
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+            var operation = -1;
+            do
+            {
+                ShowMenuHikes();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -77,26 +111,41 @@ namespace SkiResort.Views
                     case 5:
                         Rate();
                         break;
+<<<<<<< HEAD
 
 
 
+=======
+                   
+                   
+                   
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                     default:
                         break;
                 }
 
             } while (true);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         private void Exit()
         {
             DisplayServicesAndActivities display = new DisplayServicesAndActivities();
 
         }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         private void Remove()
         {
             this.ListAll();
 
+<<<<<<< HEAD
             var hike = new Hike();
             do
             {
@@ -109,18 +158,33 @@ namespace SkiResort.Views
 
 
         } //validated
+=======
+            Console.WriteLine("Enter ID to delete: ");
+            int id = int.Parse(Console.ReadLine());
+            Hike hike = new Hike();
+            hikeController.Delete(id);
+            Console.WriteLine("Hike removed successfully!");
+            
+
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void Update()
         {
             this.ListAll();
             DisplayUpdate displayUpdate = new DisplayUpdate();
+<<<<<<< HEAD
         }  //validated
+=======
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void Rate()
         {
             this.ListAll();
             Rate rate = new Rate();
 
+<<<<<<< HEAD
             var hike = new Hike();
             do
             {
@@ -152,10 +216,20 @@ namespace SkiResort.Views
             this.rateController.AddRate(rate);
             Console.WriteLine("\nRate added successfully!", Color.LightGreen);
         } //validated
+=======
+            Console.WriteLine("Enter hike id to rate: ");
+            rate.HikeId = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter stars (1...5): ");
+            rate.Stars = int.Parse(Console.ReadLine());
+            this.rateController.AddRate(rate);
+            Console.WriteLine("Rate added successfully!");
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void Add()
         {
             Hike hike = new Hike();
+<<<<<<< HEAD
 
             Console.WriteLine("\nEnter start point: ");
             hike.StartPoint = Console.ReadLine();
@@ -230,13 +304,30 @@ namespace SkiResort.Views
 
 
             return hike;
+=======
+            Console.WriteLine("Enter start point: ");
+            hike.StartPoint = Console.ReadLine();
+            Console.WriteLine("Enter end point: ");
+            hike.EndPoint = Console.ReadLine();
+            Console.WriteLine("Enter start date : ");
+            hike.StartDate =DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Enter average duration: ");
+            hike.AverageDuration = decimal.Parse(Console.ReadLine());
+            this.hikeController.Add(hike);
+            Console.WriteLine("Hike added successfully!");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         public void ListAll()
         {
 
+<<<<<<< HEAD
             Console.WriteLine(new string('-', 40));
             Console.WriteLine(new string(' ', 18) + "HIKES" + new string(' ', 18));
+=======
+            Console.WriteLine(new string('-',40));
+            Console.WriteLine(new string(' ', 18)+"HIKES"+ new string(' ', 18));
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
             Console.WriteLine(new string('-', 40));
 
             var hikes = this.hikeController.GetAll();
@@ -244,6 +335,7 @@ namespace SkiResort.Views
             foreach (var hike in hikes)
             {
                 var rating = rateController.CalculateRateForHike(hike);
+<<<<<<< HEAD
                 //Console.WriteLine($"{hike.Id} From {hike.StartPoint} to {hike.EndPoint} - {hike.AverageDuration:f0} hours on {hike.StartDate.ToString("dd/MM/yyyy")}" +
                     //$" with rate {rating} starts ");
 
@@ -265,3 +357,14 @@ namespace SkiResort.Views
 
     }
 }
+=======
+                Console.WriteLine($"{hike.Id} From {hike.StartPoint} to {hike.EndPoint} - {hike.AverageDuration:f0} hours on {hike.StartDate.ToString("dd/MM/yyyy")}" +
+                    $" with rate {rating} starts ");
+            }
+            Console.WriteLine();
+        }
+
+      
+    }
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

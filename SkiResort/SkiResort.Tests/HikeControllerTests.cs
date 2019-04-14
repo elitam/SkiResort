@@ -11,6 +11,7 @@ using System.Text;
 
 namespace SkiResort.Tests
 {
+<<<<<<< HEAD
     public class TestAdd
     {
         [TestCase]
@@ -19,6 +20,14 @@ namespace SkiResort.Tests
         {
 
 
+=======
+    public class HikeControllerTests
+    {
+        [TestCase]
+
+        public void AddingHikeToDatabase()
+        {
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
             var mockSet = new Mock<DbSet<Hike>>();
             var hike = new Hike();
             var mockContext = new Mock<SkiResortContext>();
@@ -30,6 +39,7 @@ namespace SkiResort.Tests
             mockSet.Verify(m => m.Add(It.IsAny<Hike>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
+<<<<<<< HEAD
 
 
 
@@ -37,6 +47,12 @@ namespace SkiResort.Tests
 
         [TestCase]
         public void GetAllHikes()
+=======
+        }
+
+        [TestCase]
+        public void GetAllHikesFromDatabase()
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         {
             var data = new List<Hike>
             {
@@ -64,7 +80,11 @@ namespace SkiResort.Tests
         }
 
         [TestCase]
+<<<<<<< HEAD
         public void GetHike()
+=======
+        public void GetHikeFromDatabaseById()
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         {
             var data = new List<Hike>
             {
@@ -90,4 +110,8 @@ namespace SkiResort.Tests
 
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

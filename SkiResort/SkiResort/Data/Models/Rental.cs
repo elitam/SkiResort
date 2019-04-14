@@ -14,6 +14,7 @@ namespace SkiResort.Data.Models
         {
 
         }
+<<<<<<< HEAD
         public Rental(List<Item> items, string name)
         {
             this.Items = items;
@@ -33,3 +34,21 @@ namespace SkiResort.Data.Models
 
     }
 }
+=======
+        public Rental(List<Item> items)
+        {
+            this.Items = items;
+        }
+
+        // PROPERTIES
+        [Key]
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public ICollection<Item> Items { get; set; }
+        
+
+    }
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

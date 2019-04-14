@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkiResort.Data;
 
 namespace SkiResort.Migrations
 {
     [DbContext(typeof(SkiResortContext))]
-    partial class SkiResortContextModelSnapshot : ModelSnapshot
+    [Migration("20190412100441_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,9 +100,6 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .IsRequired();
-
                     b.Property<double>("Duration");
 
                     b.Property<double>("Price");
@@ -110,11 +109,7 @@ namespace SkiResort.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
-                    b.ToTable("liftPasses");
-=======
                     b.ToTable("LiftPasses");
->>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 });
 
             modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>
@@ -125,12 +120,8 @@ namespace SkiResort.Migrations
 
                     b.Property<int>("HikeId");
 
-<<<<<<< HEAD
                     b.Property<int>("Stars")
                         .HasMaxLength(5);
-=======
-                    b.Property<int>("Stars");
->>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
                     b.HasKey("Id");
 
@@ -145,23 +136,14 @@ namespace SkiResort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-                    b.Property<string>("Name")
-                        .IsRequired();
-=======
                     b.Property<string>("Name");
->>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
                     b.HasKey("Id");
 
                     b.ToTable("Rentals");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("SkiResort.Data.Models.Trail", b =>
-=======
             modelBuilder.Entity("SkiResort.Data.Models.Rate", b =>
->>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -2,11 +2,16 @@
 using SkiResort.Data.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using Console = Colorful.Console;
 
+=======
+using System.Linq;
+using System.Text;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 namespace SkiResort.Views
 {
@@ -27,6 +32,7 @@ namespace SkiResort.Views
             Console.WriteLine();
             Console.WriteLine("         ┌────────────────────────────────┐");
             Console.WriteLine("         │             RENTAL!            │");
+<<<<<<< HEAD
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                        MENU:                     │");
             Console.WriteLine("│                                                  │");
@@ -56,6 +62,29 @@ namespace SkiResort.Views
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+            Console.WriteLine("┌────────└────────────────────────────────┘───────────┐");
+            Console.WriteLine("│                        MENU:                        │");
+            Console.WriteLine("│                                                     │");
+            Console.WriteLine("│      0. BACK                     3. LIST ITEMS      │");
+            Console.WriteLine("│                                                     │");
+            Console.WriteLine("│      1. ADD ITEM                 4. RENT ITEM       │");
+            Console.WriteLine("│                                                     │");
+            Console.WriteLine("│      2. REMOVE ITEM              5. RETURN ITEM     │");
+            Console.WriteLine("│                                                     │");
+            Console.WriteLine("└─────────────────────────────────────────────────────┘");
+            Console.WriteLine();
+        }
+
+
+        private void InputRental()
+        {
+            var operation = -1;
+            do
+            {
+                ShowMenuRental();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -83,6 +112,7 @@ namespace SkiResort.Views
             } while (operation != closeOperation);
         }
 
+<<<<<<< HEAD
         private void ReturnItem()
         {
             ListRentedItems();
@@ -97,10 +127,25 @@ namespace SkiResort.Views
             this.rentalController.ReturnItem(item.Id);
             Console.WriteLine("\nItem returned successfully!", Color.LightGreen);
         } // validated
+=======
+
+
+        private void ReturnItem()
+        {
+            ListRentedItems();
+            Console.WriteLine("Enter item id:");
+            var id = int.Parse(Console.ReadLine());
+            this.rentalController.ReturnItem(id);
+            Console.WriteLine("Item returned successfully!");
+        }
+
+
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void RentItem()
         {
             ListAll();
+<<<<<<< HEAD
 
             var item = new Item();
             do
@@ -113,10 +158,18 @@ namespace SkiResort.Views
             Console.WriteLine("\nItem rented successfully!", Color.LightGreen);
 
         } // validated
+=======
+            Console.WriteLine("Enter item id:");
+            var id = int.Parse(Console.ReadLine());
+            this.rentalController.RentItem(id);
+            Console.WriteLine("Item rented successfully!");
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void RemoveItem()
         {
             ListAll();
+<<<<<<< HEAD
 
             var item = new Item();
             do
@@ -129,10 +182,18 @@ namespace SkiResort.Views
             Console.WriteLine("\nItem removed successfully!", Color.LightGreen);
 
         } // validated
+=======
+            Console.WriteLine("Enter item id:");
+            var id = int.Parse(Console.ReadLine());
+            this.rentalController.RemoveById(id);
+            Console.WriteLine("Item removed successfully!");
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void AddItem()
         {
             Item item = new Item();
+<<<<<<< HEAD
 
             Console.WriteLine("\nEnter item name: ");
             item.Name = Console.ReadLine();
@@ -174,6 +235,33 @@ namespace SkiResort.Views
             this.rentalController.Add(item);
             Console.WriteLine("\nItem added successfully!", Color.LightGreen);
         } // validated
+=======
+            Console.WriteLine("Enter item name: ");
+            item.Name = Console.ReadLine();
+            Console.WriteLine("Enter item price: ");
+            item.Price = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter item size: ");
+            item.Size = Console.ReadLine();
+            Console.WriteLine("Enter item gender: ");
+            var gender = Console.ReadLine();
+            ValidateGender(gender);
+            item.Gender = gender;
+            this.rentalController.Add(item);
+            Console.WriteLine("Item added successfully!"); // tuka go pookrasi da e zatvoreno v kvadratche
+        }
+
+        public void ValidateGender(string gender)
+        {
+            while (gender != "Male" && gender != "Female" && gender != "Kids")
+            {
+                Console.WriteLine("Invalid gender. Only Male, Female or Kids available !");
+                Console.WriteLine("Enter type: (Male/Female/Kids)");
+                gender = Console.ReadLine();
+            }
+            
+
+        }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
         private void ListAll()
         {
@@ -219,6 +307,7 @@ namespace SkiResort.Views
             {
                 if (item.Status == status)
                 {
+<<<<<<< HEAD
                     //Console.WriteLine($"{item.Id}: {item.Name} ({item.Size} size), costs {item.Price} lv", Color.Orange);
 
                     string text = "{0}: {1} ({2} size), costs {3} lv";
@@ -237,6 +326,12 @@ namespace SkiResort.Views
 
 
             
+=======
+                    Console.WriteLine($"{item.Id}: {item.Name} ({item.Size} size), costs {item.Price:F2} lv");
+                }
+
+            }
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void ListRentedItems()
@@ -254,6 +349,7 @@ namespace SkiResort.Views
 
         private void Back()
         {
+<<<<<<< HEAD
             DisplayServicesAndActivities displayServicesAndActivities = new DisplayServicesAndActivities();
         }
 
@@ -285,8 +381,16 @@ namespace SkiResort.Views
                 case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
                 default: return input.First().ToString().ToUpper() + input.Substring(1);
             }
+=======
+            DisplayServicesAndActivities display = new DisplayServicesAndActivities();
+
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

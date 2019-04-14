@@ -35,6 +35,10 @@ namespace SkiResort.Data.Models
         public DateTime StartDate { get; set; }
 
         public ICollection<Rate> Rates { get; set; }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
     }
 }

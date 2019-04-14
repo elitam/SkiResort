@@ -16,6 +16,7 @@ namespace SkiResort
 
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             Display Display = new Display();
 
             //Console.WriteLine("console in blue", Color.Blue);
@@ -30,6 +31,9 @@ namespace SkiResort
             //Console.WriteLine("console in default");
 
 
+=======
+           Display display = new Display();
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
     }
 }

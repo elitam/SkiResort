@@ -1,5 +1,6 @@
 ﻿using SkiResort.Business;
 using SkiResort.Data.Models;
+<<<<<<< HEAD
 using SkiResort.Views.Hikes;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using Console = Colorful.Console;
+=======
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 namespace SkiResort.Views.Info
 {
@@ -15,11 +22,23 @@ namespace SkiResort.Views.Info
         public DisplayLiftPass()
         {
             liftPassController = new LiftPassController();
+<<<<<<< HEAD
             InputLiftPass();
         }
 
         private LiftPassController liftPassController;
 
+=======
+            InputHikes();
+        }
+
+
+
+        private LiftPassController liftPassController;
+
+
+
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         private void ShowMenuHikes()
         {
 
@@ -38,6 +57,7 @@ namespace SkiResort.Views.Info
         }
 
         public List<LiftPass> boughtPasses = new List<LiftPass>();
+<<<<<<< HEAD
        
         private void InputLiftPass()
         {
@@ -54,6 +74,17 @@ namespace SkiResort.Views.Info
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+
+
+        private void InputHikes()
+        {
+            var operation = -1;
+            do
+            {
+                ShowMenuHikes();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -66,7 +97,11 @@ namespace SkiResort.Views.Info
                         ListAllTypes();
                         break;
 
+<<<<<<< HEAD
                  
+=======
+
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 }
 
             } while (true);
@@ -84,6 +119,7 @@ namespace SkiResort.Views.Info
             var i = 1;
             foreach (var liftPass in liftPasses)
             {
+<<<<<<< HEAD
                 
                 //Console.WriteLine($" {i}.  {liftPass.Description} -- {liftPass.Price} lv");
 
@@ -138,6 +174,46 @@ namespace SkiResort.Views.Info
             foreach (var pass in boughtPasses)
             {
                 Console.WriteLine(new string(' ', 18) + $"{pass.Description} for {pass.Type} ");
+=======
+
+                Console.WriteLine($" {i}.  {liftPass.Description} -- {liftPass.Price} lv");
+                Console.WriteLine();
+                i++;
+            }
+
+            Console.WriteLine("┌──────────────────────────────────────────────────┐");
+            Console.WriteLine("│            KIDS get 50% dicount !!!              │");
+            Console.WriteLine("│     STUDENTS and RETIRED get 30% dicount !!!     │");
+            Console.WriteLine("└──────────────────────────────────────────────────┘");
+
+        }
+
+
+
+
+        private void Buy()
+        {
+            ListAllTypes();
+            Console.WriteLine("Selects type of pass: (1 ... 10)");
+            var type = int.Parse(Console.ReadLine());
+            LiftPass liftPass = liftPassController.GetByType(type);
+
+            Console.WriteLine("Are you a (Adult / Kid / Student / Retired):");
+            var typeOfPerson = Console.ReadLine();
+
+            liftPass.Type = typeOfPerson;
+
+            var price = liftPassController.CalculatePrice(liftPass);
+            Console.WriteLine($"It costs {price} lv. ");
+            boughtPasses.Add(liftPass);
+            Console.WriteLine();
+            Console.WriteLine(new string('─', 22));
+            Console.WriteLine("   You have bought:");
+            Console.WriteLine(new string('─', 22));
+            foreach (var pass in boughtPasses)
+            {
+                Console.WriteLine($"   {pass.Description} for {pass.Type} ");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 Console.WriteLine();
             }
 
@@ -145,6 +221,7 @@ namespace SkiResort.Views.Info
 
         }
 
+<<<<<<< HEAD
         private string FirstCharToUpper(string type)
         {
             switch (type)
@@ -178,10 +255,16 @@ namespace SkiResort.Views.Info
             return liftPass;
         }
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         private void Back()
         {
             DisplayInfo displayInfo = new DisplayInfo();
 
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

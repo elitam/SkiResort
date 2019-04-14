@@ -2,10 +2,14 @@
 using SkiResort.Data.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using Console = Colorful.Console;
+=======
+using System.Text;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 namespace SkiResort.Views
 {
@@ -18,12 +22,25 @@ namespace SkiResort.Views
             InputLifts();
         }
 
+<<<<<<< HEAD
         private TrailController trailController;
         private LiftController liftController;
 
         private void ShowMenuTrails()
         {
             Console.WriteLine();
+=======
+
+
+        private TrailController trailController;
+        private LiftController liftController;
+
+
+
+
+        private void ShowMenuLifts()
+        {
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
             Console.WriteLine("         ┌────────────────────────────────┐");
             Console.WriteLine("         │            TRAILS!             │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
@@ -34,12 +51,16 @@ namespace SkiResort.Views
             Console.WriteLine("│       1. ADD                 3. LIST ALL         │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("└──────────────────────────────────────────────────┘");
+<<<<<<< HEAD
             Console.WriteLine();
 
+=======
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void InputLifts()
         {
+<<<<<<< HEAD
             ShowMenuTrails();
             var operation = -1;
             do
@@ -53,6 +74,13 @@ namespace SkiResort.Views
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+            var operation = -1;
+            do
+            {
+                ShowMenuLifts();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -82,6 +110,7 @@ namespace SkiResort.Views
 
         private void Remove()
         {
+<<<<<<< HEAD
             ListAll();
             Trail trail = GetById();
             do
@@ -169,6 +198,43 @@ namespace SkiResort.Views
                 i++;
             } while (type.ToLower() != "green" && type.ToLower() != "blue" && type.ToLower() != "red" && type.ToLower() != "black");
             trail.Type = FirstCharToUpper(type);
+=======
+            this.ListAll();
+
+            Console.WriteLine("Enter ID to delete: ");
+            int id = int.Parse(Console.ReadLine());
+            Trail trail = new Trail();
+            trailController.Delete(id);
+            Console.WriteLine("Trail removed successfully!");
+        }
+
+        
+
+        private void Add()
+        {
+            //string name, string type, string mode
+            Trail trail = new Trail();
+            Console.WriteLine("Enter name: ");
+            trail.Name = Console.ReadLine();
+
+
+            Console.WriteLine("Enter type: (Green/Blue/Red/Black)");
+            var trailType = Console.ReadLine();
+            ValidateType(trailType);
+            trail.Type = trailType;
+            
+            Console.WriteLine("Enter mode : (Beginner/Intermediante/Advanced/Expert)");
+            var trailMode = Console.ReadLine();
+            ValidateMode(trailMode);
+            trail.Mode = trailMode;
+            
+            Console.WriteLine("Enter lift id to access the trail: ");
+            trail.LiftId = int.Parse(Console.ReadLine());
+
+
+            this.trailController.Add(trail);
+            Console.WriteLine("Trail added successfully!");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         private void ListAll()
@@ -179,6 +245,7 @@ namespace SkiResort.Views
             Console.WriteLine(new string('-', 40));
 
             var trails = this.trailController.GetAll();
+<<<<<<< HEAD
 
 
             foreach (var trail in trails)
@@ -272,3 +339,45 @@ namespace SkiResort.Views
         }
     }
 }
+=======
+           
+            
+            foreach (var trail in trails)
+            {
+                
+                var liftId = trail.LiftId;
+                var lift = this.liftController.Get(liftId);
+
+
+               
+                Console.WriteLine($"{trail.Id} - {trail.Name} is {trail.Type} and it is suitable for {trail.Mode} skiers.");
+                Console.WriteLine($"Änd you can access it by the {lift.Name} .");
+            }
+        }
+
+
+        private void ValidateType(string trailType)
+        {
+            while (trailType != "Green" && trailType != "Blue" && trailType != "Red" && trailType != "Black")
+            {
+                Console.WriteLine("Invalid trail type. Only Green, Blue, Red Or Black available !");
+                Console.WriteLine("Enter type: (Green/Blue/Red/Black)");
+                trailType = Console.ReadLine();
+            }
+        }
+
+        private void ValidateMode(string trailMode)
+        {
+            while (trailMode != "Beginner" && trailMode != "Intermediante" && trailMode != "Advanced" && trailMode != "Expert")
+            {
+                Console.WriteLine("Invalid trail mode. Only Beginner, Intermediante, Advanced or Expert available!");
+                Console.WriteLine("Enter mode: (Beginner/Intermediante/Advanced/Expert)");
+                trailMode = Console.ReadLine();
+            }
+        }
+
+
+
+    }
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

@@ -9,6 +9,7 @@ namespace SkiResort.Data.Models
     {
         public Rate()
         {
+<<<<<<< HEAD
 
         }
         public Rate(int stars, int hikeId)
@@ -16,6 +17,14 @@ namespace SkiResort.Data.Models
             Stars = stars;
             // Hike = hike;
             HikeId = hikeId;
+=======
+                
+        }
+        public Rate(int stars, int hikeId)
+        {
+            this.Stars = stars; 
+            this.HikeId = hikeId;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
         }
 
         [Key]
@@ -31,4 +40,8 @@ namespace SkiResort.Data.Models
 
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da

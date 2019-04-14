@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using SkiResort.Business;
 using SkiResort.Data.Models;
 using SkiResort.Views.Hikes;
@@ -6,6 +7,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using Console = Colorful.Console;
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
 
 namespace SkiResort.Views
 {
@@ -21,11 +27,19 @@ namespace SkiResort.Views
 
             Console.WriteLine();
             Console.WriteLine("         ┌────────────────────────────────┐");
+<<<<<<< HEAD
             Console.WriteLine("         │      SERIVES & ACTIVITIES      │");
             Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
             Console.WriteLine("│                      MENU:                       │   ");
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│                     0. EXIT                      │   ");
+=======
+            Console.WriteLine("         │      SEVICES & ACTIVITIES      │");
+            Console.WriteLine("┌────────└────────────────────────────────┘────────┐");
+            Console.WriteLine("│                      MENU:                       │   ");
+            Console.WriteLine("│                                                  │   ");
+            Console.WriteLine("│                    0. BACK                       │   ");
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
             Console.WriteLine("│                                                  │   ");
             Console.WriteLine("│        1. RENTAL              2. HIKES           │   ");
             Console.WriteLine("│                                                  │   ");
@@ -33,6 +47,7 @@ namespace SkiResort.Views
             Console.WriteLine();
         }
 
+<<<<<<< HEAD
 
 
         private void InputServices()
@@ -50,6 +65,17 @@ namespace SkiResort.Views
                 {
                     Console.WriteLine("Invalid input!", Color.Salmon);
                 }
+=======
+        
+
+        private void InputServices()
+        {
+            var operation = -1;
+            do
+            {
+                ShowMenuServices();
+                operation = int.Parse(Console.ReadLine());
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
                 switch (operation)
                 {
                     case 0:
@@ -82,7 +108,14 @@ namespace SkiResort.Views
 
         private void Back()
         {
+<<<<<<< HEAD
             Display display = new Display();
         }
     }
 }
+=======
+           Display display = new Display();
+        }
+    }
+}
+>>>>>>> 5b8a688afb28000f9d15563c0ade89958f34d7da
